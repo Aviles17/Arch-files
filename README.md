@@ -17,6 +17,7 @@ The following files represent the post-installation configuration for an Archlin
   - Use **wofi** package for menu management
   - Install Thunar File explorer based on GTK and delete Dolphin
   - Install a browser of your choise. Current configuration: Zen-Browser on WIN+B
+- Install Hyprshot for screenshots in HD
 
 ## Terminal (Kitty)
 - You should have installed at least one or more Nerd-Font of your choise
