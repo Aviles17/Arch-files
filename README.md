@@ -1,6 +1,6 @@
 # Archlinux Post-Installation Configuration
 
-The following files represent the post-installation configuration for an Archlinux environment based on 2 possible GUI providers (Qtile or HYperland); however, **Qtile environment is no logner updated or mantained**. Keep in mind that dispide HYperland been an electron GUI managed, most of the apps used are rocomended to be GTK, in order to apply the corresponding themes that match the overall configuration.
+The following files represent the post-installation configuration for an Archlinux environment based on 2 possible GUI providers (Qtile or Hyperland); however, **Qtile environment is no logner updated or mantained**. Keep in mind that dispide Hyperland been an electron GUI managed, most of the apps used are rocomended to be GTK, in order to apply the corresponding themes that match the overall configuration.
 
 ## OS & Hardware Recommendations
 - OS: Most recent **Archlinux image** with updated Key's
