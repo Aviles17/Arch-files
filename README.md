@@ -2,6 +2,8 @@
 
 The following files represent the post-installation configuration for an Archlinux environment based on 2 possible GUI providers (Qtile or Hyperland); however, **Qtile environment is no logner updated or mantained**. Keep in mind that dispide Hyperland been an electron GUI managed, most of the apps used are rocomended to be GTK, in order to apply the corresponding themes that match the overall configuration.
 
+![screenshot](./hyprland-config/2025-08-10-184046_hyprshot.png)
+
 ## OS & Hardware Recommendations
 - OS: Most recent **Archlinux image** with updated Key's
 - ~ partition: Used for files and NOT FOR SOFTWARE (Recommended 50% or less if you are a developer that uses a lot of tools)
@@ -17,6 +19,8 @@ The following files represent the post-installation configuration for an Archlin
   - Use **wofi** package for menu management
   - Install Thunar File explorer based on GTK and delete Dolphin
   - Install a browser of your choise. Current configuration: Zen-Browser on WIN+B
+- For login and autentication use SSDM package, and for the theme installation the repo: https://github.com/Aviles17/sddm-backup-repo
+  - This repo is a fork frokm the original repo from Keyitdev https://github.com/Keyitdev/sddm-astronaut-theme
 
 ## Terminal (Kitty)
 - You should have installed at least one or more Nerd-Font of your choise
