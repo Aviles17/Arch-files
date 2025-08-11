@@ -22,7 +22,7 @@
     ],
     // Modules configuration
     "custom/archlogo":{
-         "format": " ",
+         "format": "   ",
          "tooltip": false,
          "on-click":"wofi --show drun"
     },
@@ -88,6 +88,7 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ",
+        "format-disabled": "Disabled/Airplane Mode 󰀞 ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
