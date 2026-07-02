@@ -33,6 +33,7 @@ Ver [`hyprland-config/README.md`](./hyprland-config/README.md) para la explicaci
 - **Thunar** (GTK) como explorador de archivos — se recomienda desinstalar Dolphin (Qt) para evitar mezclar toolkits.
 - Navegador a elección; la configuración actual usa **Zen Browser** (`SUPER + B`).
 - **Hyprshot** para capturas de pantalla en alta definición.
+- **dunst** como daemon de notificaciones (incluye la alerta de batería baja, ver `waybar/scripts/battery_alert.fish`).
 
 ### Pantalla de login (SDDM)
 

@@ -27,7 +27,15 @@ Puntos a tener en cuenta de `hyprland.conf`:
 |---|---|
 | `config.jsonc` | Módulos activos: workspaces de Hyprland, reloj, batería, red, bluetooth, audio, brillo, CPU, logo de Arch, tray, modo avión, etc. |
 | `style.css` / `colors.css` | Estilos visuales de la barra (paleta de colores separada del layout para facilitar cambios de tema). |
-| `scripts/battery_alert.fish` | Script en segundo plano (lanzado desde `hyprland.conf`) que revisa la batería cada 5 min y dispara una notificación crítica vía `notify-send` si queda ≤10% y está descargando. |
+| `scripts/battery_alert.fish` | Script en segundo plano (lanzado desde `hyprland.conf`) que revisa la batería cada 5 min y dispara una notificación crítica vía `notify-send` si queda ≤10% y está descargando. Requiere un daemon de notificaciones corriendo (ver `dunst/` abajo) para que la alerta se vea en pantalla. |
+
+### `dunst/` — Daemon de notificaciones
+
+`dunstrc` define la apariencia y el comportamiento de las notificaciones del sistema (incluida la alerta de batería). Paleta alineada al Base16 Gruvbox Dark de `waybar/colors.css`: fondo `#282828`, acentos `#83a598` (normal) / `#b8bb26` (low) / `#fb4934` (critical). Incluye una regla específica `[battery-critical]` para las notificaciones de `battery_alert.fish` con `timeout = 0` (no se cierran solas).
+
+> Nota de theming: `waybar` usa Gruvbox Dark y `kitty` usa Catppuccin Mocha — son paletas distintas ya presentes en el setup original. `dunst` se alineó a Gruvbox por ser la paleta del elemento de UI más persistente en pantalla (la barra), pero si preferís unificar con Catppuccin, es cuestión de reemplazar los códigos de color en `dunstrc`.
+
+`dunst` se activa **por D-Bus** vía su unidad de systemd (`/usr/lib/systemd/user/dunst.service`, estática): no hace falta agregar un `exec-once` en `hyprland.conf`, alcanza con tener el paquete instalado. Systemd la arranca sola la primera vez que algo llama a `notify-send`.
 
 ### `wofi/` — Lanzador de aplicaciones
 
@@ -92,6 +100,9 @@ sudo pacman -S thunar gtk3 adw-gtk-theme
 # Utilidades varias mencionadas en el repo
 sudo pacman -S htop cmatrix fastfetch networkmanager brightnessctl playerctl pipewire pipewire-pulse wireplumber
 
+# Daemon de notificaciones (necesario para que la alerta de batería se vea)
+sudo pacman -S dunst
+
 # AUR (usando yay u otro helper)
 yay -S hyprshot zen-browser-bin protonvpn-cli sddm sublime-text-4
 ```
@@ -105,7 +116,7 @@ git clone git@github.com:Aviles17/Arch-files.git
 cd Arch-files/hyprland-config
 
 mkdir -p ~/.config
-cp -r hypr waybar wofi kitty gtk-3.0 Thunar ~/.config/
+cp -r hypr waybar wofi kitty gtk-3.0 Thunar dunst ~/.config/
 cp mimeapps.list ~/.config/mimeapps.list
 mkdir -p ~/Pictures
 cp Pictures/*.jpg ~/Pictures/
@@ -141,4 +152,5 @@ Seguí las instrucciones de instalación de ese repo (clonar en `/usr/share/sddm
 
 - `hyprctl reload` tras cualquier cambio en `hypr/hyprland.conf`.
 - Confirmar que `~/.config/waybar/scripts/battery_alert.fish` tiene permisos de ejecución (`chmod +x`) — el `exec-once` de `hyprland.conf` depende de eso.
+- Probar el daemon de notificaciones con `notify-send "Test" "hola"`. Si no aparece nada, revisar `systemctl --user status dunst` (debería figurar `active (running)`, activado por D-Bus).
 - Si algún ícono no se ve en waybar/kitty, falta una Nerd Font instalada y seleccionada.
